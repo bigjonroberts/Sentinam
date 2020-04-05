@@ -1,0 +1,7 @@
+version: 2.1
+orbs:
+  dotnet-tools: bwp-orbs/dotnet-tools@13.0.0
+workflows:
+  publish:
+    jobs:
+      - dotnet-tools/publish Sentinam.sln
