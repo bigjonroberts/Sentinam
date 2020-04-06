@@ -1,7 +1,20 @@
-version: 2.1
-orbs:
-  dotnet-tools: bwp-orbs/dotnet-tools@13.0.0
-workflows:
-  publish:
-    jobs:
-      - dotnet-tools/publish Release src/Sentinam/Sentinam.fsproj
+version: 2
+jobs:
+  build:
+    docker:
+      # specify the version
+      - image: mcr.microsoft.com/dotnet/core/sdk:3.1
+
+      # Specify service dependencies here if necessary
+      # CircleCI maintains a library of pre-built images
+      # documented at https://circleci.com/docs/2.0/circleci-images/
+      # - image: circleci/postgres:9.4
+
+    steps:
+      - checkout
+
+      # specify any bash command here prefixed with `run: `
+      - run: dotnet tool restore
+      - run: dotnet test -c Release
+      - run: dotnet publish --no-build --no-restore -c Release -p:Version=0.4.0.0 src/Sentinam/Sentinam.fsproj
+      - run: dotnet publish --no-build --no-restore -c Release -p:Version=0.4.0.0 src/Sentinam.Persistence.Memory/Sentinam.Persistence.Memory.fsproj
