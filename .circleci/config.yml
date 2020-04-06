@@ -4,4 +4,4 @@ orbs:
 workflows:
   publish:
     jobs:
-      - publish Sentinam.sln
+      - dotnet-tools/publish
