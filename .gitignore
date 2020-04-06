@@ -197,3 +197,4 @@ docsrc/tools/FSharp.Formatting.svclog
 .idea/
 *.DotSettings.user
 deploy
+.ionide

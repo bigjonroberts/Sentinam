@@ -1,3 +1,21 @@
-source https://www.nuget.org/api/v2
+version 5.243
+source https://api.nuget.org/v3/index.json
+framework: netstandard2.0
+storage: none
+clitool dotnet-fake
+generate_load_scripts: true
 
 nuget FSharp.Core
+nuget FSharp.Control.Reactive
+github haf/YoLo YoLo.fs
+
+group Test
+  source https://api.nuget.org/v3/index.json
+  framework: netcoreapp3.1
+  storage: none
+
+  nuget FSharp.Core ~> 4.7.0 redirects: force
+  nuget Microsoft.NET.Test.Sdk ~> 16
+  nuget xunit ~> 2.4
+  nuget xunit.runner.visualstudio ~> 2.4
+  nuget coverlet.collector ~> 1
