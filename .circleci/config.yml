@@ -3,7 +3,7 @@ jobs:
   build:
     docker:
       # specify the version
-      - image: mcr.microsoft.com/dotnet/core/sdk:3.1
+      - image: bigjonroberts/dotnetcore-mono:3.1.201-6.8.0.96
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
