@@ -1,5 +1,7 @@
 group Test
     FSharp.Core
     Microsoft.NET.Test.Sdk
-    xunit 
+    xunit
     xunit.runner.visualstudio
+    Microsoft.NETFramework.ReferenceAssemblies
+    Microsoft.VisualStudio.TestPlatform.ObjectModel
