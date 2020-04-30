@@ -14,6 +14,7 @@
     <Tailcalls>true</Tailcalls>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="AssemblyInfo.fs" />
     <Compile Include="Observable.fs" />
     <Compile Include="Persistence.fs" />
     <Compile Include="Sentinam.fs" />
