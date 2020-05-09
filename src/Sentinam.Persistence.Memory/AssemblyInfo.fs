@@ -4,20 +4,20 @@ open System.Reflection
 
 [<assembly: AssemblyTitleAttribute("Sentinam.Persistence.Memory")>]
 [<assembly: AssemblyProductAttribute("Sentinam")>]
-[<assembly: AssemblyVersionAttribute("0.5.0")>]
-[<assembly: AssemblyMetadataAttribute("ReleaseDate","2020-05-01T00:00:00.0000000-05:00")>]
-[<assembly: AssemblyFileVersionAttribute("0.5.0")>]
-[<assembly: AssemblyInformationalVersionAttribute("0.5.0")>]
+[<assembly: AssemblyVersionAttribute("0.5.1")>]
+[<assembly: AssemblyMetadataAttribute("ReleaseDate","2020-05-09T00:00:00.0000000-05:00")>]
+[<assembly: AssemblyFileVersionAttribute("0.5.1")>]
+[<assembly: AssemblyInformationalVersionAttribute("0.5.1")>]
 [<assembly: AssemblyMetadataAttribute("ReleaseChannel","release")>]
-[<assembly: AssemblyMetadataAttribute("GitHash","d1c324df4a96cd6f6513b2e72f9e9999af5f0472")>]
+[<assembly: AssemblyMetadataAttribute("GitHash","6a9720153ff4967a1c49feaaf5040f1dd7aef009")>]
 do ()
 
 module internal AssemblyVersionInformation =
     let [<Literal>] AssemblyTitle = "Sentinam.Persistence.Memory"
     let [<Literal>] AssemblyProduct = "Sentinam"
-    let [<Literal>] AssemblyVersion = "0.5.0"
-    let [<Literal>] AssemblyMetadata_ReleaseDate = "2020-05-01T00:00:00.0000000-05:00"
-    let [<Literal>] AssemblyFileVersion = "0.5.0"
-    let [<Literal>] AssemblyInformationalVersion = "0.5.0"
+    let [<Literal>] AssemblyVersion = "0.5.1"
+    let [<Literal>] AssemblyMetadata_ReleaseDate = "2020-05-09T00:00:00.0000000-05:00"
+    let [<Literal>] AssemblyFileVersion = "0.5.1"
+    let [<Literal>] AssemblyInformationalVersion = "0.5.1"
     let [<Literal>] AssemblyMetadata_ReleaseChannel = "release"
-    let [<Literal>] AssemblyMetadata_GitHash = "d1c324df4a96cd6f6513b2e72f9e9999af5f0472"
+    let [<Literal>] AssemblyMetadata_GitHash = "6a9720153ff4967a1c49feaaf5040f1dd7aef009"
