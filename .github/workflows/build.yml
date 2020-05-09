@@ -26,6 +26,7 @@ jobs:
         # Work around https://github.com/actions/setup-dotnet/issues/29
         DOTNET_ROOT: ${{ runner.tool_cache }}/dncs/${{ matrix.dotnet }}/x64
         CI: true
+        DISABLE_COVERAGE: true
     - name: Build
       if: runner.os == 'Windows'
       run: ./build.ps1
@@ -33,3 +34,4 @@ jobs:
         # Work around https://github.com/actions/setup-dotnet/issues/29
         DOTNET_ROOT: ${{ runner.tool_cache }}/dncs/${{ matrix.dotnet }}/x64
         CI: true
+        DISABLE_COVERAGE: true
