@@ -1,6 +1,7 @@
 STORAGE: NONE
 NUGET
   remote: https://www.nuget.org/api/v2
+    altcover (6.8.761)
     Argu (6.0) - restriction: >= netcoreapp1.0
       FSharp.Core (>= 4.3.2) - restriction: >= netstandard2.0
       System.Configuration.ConfigurationManager (>= 4.4) - restriction: >= netstandard2.0
@@ -2076,7 +2077,6 @@ GROUP Test
 STORAGE: NONE
 NUGET
   remote: https://api.nuget.org/v3/index.json
-    altcover (6.8.761)
     Expecto (8.13.1)
       FSharp.Core (>= 4.3.4) - restriction: || (>= net461) (>= netstandard2.0)
       Mono.Cecil (>= 0.11) - restriction: || (>= net461) (>= netstandard2.0)

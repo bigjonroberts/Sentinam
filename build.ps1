@@ -4,4 +4,4 @@ echo "installing needed dotnet version"
 echo "Restoring dotnet tools..."
 dotnet tool restore
 
-dotnet fake build -t %*
+Invoke-Expression "& `"dotnet`" fake build -t @()"

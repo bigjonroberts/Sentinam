@@ -4,4 +4,4 @@ group Test
     xunit
     xunit.runner.visualstudio
     Microsoft.NETFramework.ReferenceAssemblies
-    Microsoft.VisualStudio.TestPlatform.ObjectModel
+    Microsoft.VisualStudio.TestPlatform.ObjectModel framework: >= net461
