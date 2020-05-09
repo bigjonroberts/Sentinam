@@ -29,7 +29,7 @@ jobs:
         DISABLE_COVERAGE: true
     - name: Build
       if: runner.os == 'Windows'
-      run: ./build.ps1 DotnetPack
+      run: ./build.ps1
       env:
         # Work around https://github.com/actions/setup-dotnet/issues/29
         DOTNET_ROOT: ${{ runner.tool_cache }}/dncs/${{ matrix.dotnet }}/x64
