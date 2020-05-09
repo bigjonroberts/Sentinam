@@ -12,8 +12,9 @@ jobs:
 
     environment:
         TERM: dumb
+        DISABLE_COVERAGE: true
     steps:
       - checkout
 
       # specify any bash command here prefixed with `run: `
-      - run: DISABLE_COVERAGE=true ./build.sh
+      - run: ./build.sh

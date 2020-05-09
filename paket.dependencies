@@ -8,7 +8,9 @@ nuget FSharp.Core
 nuget Microsoft.SourceLink.GitHub prerelease copy_local: true
 nuget Microsoft.NETFramework.ReferenceAssemblies copy_local: true
 nuget FSharp.Control.Reactive
+nuget altcover ~> 6
 github haf/YoLo YoLo.fs
+
 
 // [ FAKE GROUP ]
 group Build
@@ -51,15 +53,15 @@ group Analyzers
 
 
 group Test
+  source https://www.nuget.org/api/v2
   source https://api.nuget.org/v3/index.json
   storage: none
 
-  nuget FSharp.Core ~> 4.7.0 redirects: force
+  nuget FSharp.Core
   nuget Microsoft.NET.Test.Sdk ~> 16
   nuget xunit ~> 2.4
   nuget xunit.runner.visualstudio ~> 2.4
   nuget Expecto ~> 8.13.1
   nuget YoloDev.Expecto.TestSdk ~> 0.8.0
-  nuget altcover ~> 6
   nuget Microsoft.NETFramework.ReferenceAssemblies copy_local: true
   nuget Microsoft.VisualStudio.TestPlatform.ObjectModel
