@@ -1,46 +1,43 @@
-<mxfile host="app.diagrams.net" modified="2020-10-04T18:02:26.346Z" agent="5.0 (Windows)" etag="SHdE6SvCoAutug0h0pAV" version="13.7.7" type="github">
+<mxfile host="app.diagrams.net" modified="2020-10-04T18:16:16.507Z" agent="5.0 (Windows)" etag="i6CJomZAruX7q_ReGsLq" version="13.7.7" type="github">
   <diagram id="HmRcTPKVyqjC_0KcETTQ" name="Page-1">
-    <mxGraphModel dx="865" dy="513" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
+    <mxGraphModel dx="1038" dy="688" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="0ipI7xFYABci3M8fkYDs-1" value="Command Handler" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" vertex="1" parent="1">
+        <mxCell id="0ipI7xFYABci3M8fkYDs-1" value="Command Handler" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" parent="1" vertex="1">
           <mxGeometry x="350" y="70" width="330" height="280" as="geometry" />
         </mxCell>
-        <mxCell id="0ipI7xFYABci3M8fkYDs-2" value="Datastore&lt;br&gt;Stores event streams for &lt;br&gt;each Aggregate" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.database;whiteSpace=wrap;" vertex="1" parent="1">
+        <mxCell id="0ipI7xFYABci3M8fkYDs-2" value="Datastore&lt;br&gt;Stores event streams for &lt;br&gt;each Aggregate" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.database;whiteSpace=wrap;" parent="1" vertex="1">
           <mxGeometry x="410" y="530" width="150" height="180" as="geometry" />
         </mxCell>
-        <mxCell id="0ipI7xFYABci3M8fkYDs-4" value="(StdIn)&lt;b&gt;&lt;br&gt;Message Queue for commands&lt;br&gt;&lt;/b&gt;(COuld be a&lt;br&gt;distributed pub-sub log&lt;br&gt;Like Kafka Topic&lt;br&gt;or Azure Event Hub" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
+        <mxCell id="0ipI7xFYABci3M8fkYDs-4" value="(StdIn)&lt;b&gt;&lt;br&gt;Message Queue for commands&lt;br&gt;&lt;/b&gt;(COuld be a&lt;br&gt;distributed pub-sub log&lt;br&gt;Like Kafka Topic&lt;br&gt;or Azure Event Hub" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" parent="1" vertex="1">
           <mxGeometry x="70" y="220" width="250" height="100" as="geometry" />
         </mxCell>
-        <mxCell id="0ipI7xFYABci3M8fkYDs-5" value="" style="shape=flexArrow;endArrow=classic;html=1;entryX=0;entryY=0;entryDx=20;entryDy=80;entryPerimeter=0;" edge="1" parent="1" target="0ipI7xFYABci3M8fkYDs-8">
+        <mxCell id="0ipI7xFYABci3M8fkYDs-5" value="" style="shape=flexArrow;endArrow=classic;html=1;entryX=0;entryY=0;entryDx=20;entryDy=80;entryPerimeter=0;" parent="1" target="0ipI7xFYABci3M8fkYDs-8" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="430" y="530" as="sourcePoint" />
             <mxPoint x="430" y="360" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="0ipI7xFYABci3M8fkYDs-6" value="Event &quot;Topic&quot;&lt;br&gt;(StdOut)" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
+        <mxCell id="0ipI7xFYABci3M8fkYDs-6" value="Event &quot;Topic&quot;&lt;br&gt;(StdOut)" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" parent="1" vertex="1">
           <mxGeometry x="630" y="440" width="120" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="0ipI7xFYABci3M8fkYDs-7" value="Error &quot;Topic&quot;&lt;br&gt;(StdErr)" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
+        <mxCell id="0ipI7xFYABci3M8fkYDs-7" value="Error &quot;Topic&quot;&lt;br&gt;(StdErr)" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" parent="1" vertex="1">
           <mxGeometry x="690" y="230" width="120" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="0ipI7xFYABci3M8fkYDs-8" value="Model" style="shape=cube;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;darkOpacity=0.05;darkOpacity2=0.1;" vertex="1" parent="1">
+        <mxCell id="0ipI7xFYABci3M8fkYDs-8" value="Model" style="shape=cube;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;darkOpacity=0.05;darkOpacity2=0.1;" parent="1" vertex="1">
           <mxGeometry x="410" y="240" width="120" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="0ipI7xFYABci3M8fkYDs-10" value="&lt;b&gt;1. A Command Arrives&lt;br&gt;&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+        <mxCell id="0ipI7xFYABci3M8fkYDs-10" value="&lt;b&gt;1. A Command Arrives&lt;br&gt;&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="90" y="80" width="140" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="0ipI7xFYABci3M8fkYDs-11" value="Command For:&lt;br&gt;AggregateId: 1234" style="shape=document;whiteSpace=wrap;html=1;boundedLbl=1;dashed=1;" vertex="1" parent="1">
+        <mxCell id="0ipI7xFYABci3M8fkYDs-11" value="Command For:&lt;br&gt;AggregateId: 1234" style="shape=document;whiteSpace=wrap;html=1;boundedLbl=1;dashed=1;" parent="1" vertex="1">
           <mxGeometry x="200" y="140" width="90" height="55" as="geometry" />
         </mxCell>
-        <mxCell id="0ipI7xFYABci3M8fkYDs-12" value="&lt;b&gt;3. The CommandHandler&lt;br&gt;Attempts to complete the command, using the state of the model to determine if the command is valid&lt;br&gt;&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+        <mxCell id="0ipI7xFYABci3M8fkYDs-12" value="&lt;b&gt;3. The CommandHandler&lt;br&gt;Attempts to complete the command, using the state of the model to determine if the command is valid&lt;br&gt;&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="400" y="100" width="220" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="0ipI7xFYABci3M8fkYDs-13" value="&lt;b&gt;4. IF Command is successful&lt;br&gt;4a. Resulting Events are stored&lt;br&gt;4b. Resulting events are published StdOut&lt;br&gt;&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="560" y="360" width="250" height="70" as="geometry" />
-        </mxCell>
-        <mxCell id="0ipI7xFYABci3M8fkYDs-14" value="" style="shape=flexArrow;endArrow=classic;html=1;entryX=0.733;entryY=0.056;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="0ipI7xFYABci3M8fkYDs-2">
+        <mxCell id="0ipI7xFYABci3M8fkYDs-14" value="" style="shape=flexArrow;endArrow=classic;html=1;entryX=0.733;entryY=0.056;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" target="0ipI7xFYABci3M8fkYDs-2" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="520" y="350" as="sourcePoint" />
             <mxPoint x="240" y="440" as="targetPoint" />
@@ -49,11 +46,14 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="0ipI7xFYABci3M8fkYDs-15" value="&lt;div align=&quot;left&quot;&gt;&lt;span&gt;2. Events are&lt;/span&gt;&lt;br&gt;&lt;span&gt;loaded&amp;nbsp; in sequence from &lt;/span&gt;&lt;br&gt;&lt;span&gt;the Datastore&lt;/span&gt;&lt;br&gt;&lt;span&gt;for the aggregate&lt;/span&gt;&lt;br&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;span&gt;targeted by this command&lt;/span&gt;&lt;/div&gt;" style="text;whiteSpace=wrap;html=1;fontStyle=1;labelBackgroundColor=#ffffff;" vertex="1" parent="1">
+        <mxCell id="0ipI7xFYABci3M8fkYDs-15" value="&lt;div align=&quot;left&quot;&gt;&lt;span&gt;2. Events are&lt;/span&gt;&lt;br&gt;&lt;span&gt;loaded&amp;nbsp; in sequence from &lt;/span&gt;&lt;br&gt;&lt;span&gt;the Datastore&lt;/span&gt;&lt;br&gt;&lt;span&gt;for the aggregate&lt;/span&gt;&lt;br&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;span&gt;targeted by this command&lt;/span&gt;&lt;/div&gt;" style="text;whiteSpace=wrap;html=1;fontStyle=1;labelBackgroundColor=#ffffff;" parent="1" vertex="1">
           <mxGeometry x="340" y="390" width="160" height="90" as="geometry" />
         </mxCell>
-        <mxCell id="0ipI7xFYABci3M8fkYDs-17" value="5. IF Command is not successful.&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp; Resulting Errors are published to StdErr" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1" vertex="1" parent="1">
+        <mxCell id="0ipI7xFYABci3M8fkYDs-17" value="5. IF Command is not successful.&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp; Resulting Errors are published to StdErr" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1" parent="1" vertex="1">
           <mxGeometry x="700" y="140" width="250" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="0ipI7xFYABci3M8fkYDs-13" value="&lt;b&gt;4. IF Command is successful&lt;br&gt;4a. Resulting Events are stored&lt;br&gt;&lt;/b&gt;&lt;div&gt;&lt;b&gt;4b. Resulting events are published StdOut&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;(Might need to employ outbox pattern here?)&lt;br&gt;&lt;/b&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;labelBackgroundColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="500" y="355" width="250" height="85" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
