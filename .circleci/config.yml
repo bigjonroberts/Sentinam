@@ -12,7 +12,7 @@ jobs:
 
     environment:
         TERM: dumb
-        DISABLE_COVERAGE: true
+        DISABLE_COVERAGE: false
     steps:
       - checkout
 
