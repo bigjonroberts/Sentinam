@@ -65,3 +65,4 @@ group Test
   nuget YoloDev.Expecto.TestSdk ~> 0.8.0
   nuget Microsoft.NETFramework.ReferenceAssemblies copy_local: true
   nuget Microsoft.VisualStudio.TestPlatform.ObjectModel
+  nuget coverlet.collector
