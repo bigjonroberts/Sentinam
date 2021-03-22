@@ -426,6 +426,7 @@ let dotnetTest ctx =
     let args =
         [
             "--no-build"
+            "--collect:\"XPlat Code Coverage\""
             sprintf "/p:AltCover=%b" (not disableCodeCoverage)
             sprintf "/p:AltCoverThreshold=%d" coverageThresholdPercent
             sprintf "/p:AltCoverAssemblyExcludeFilter=%s" excludeCoverage
