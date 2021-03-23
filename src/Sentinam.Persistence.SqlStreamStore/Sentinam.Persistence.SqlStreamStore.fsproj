@@ -11,6 +11,7 @@
     <Tailcalls>true</Tailcalls>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="../YoLo.fs" />
     <Compile Include="SqlStreamStore.fs" />
   </ItemGroup>
   <ItemGroup>
