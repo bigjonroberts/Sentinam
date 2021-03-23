@@ -1,4 +1,4 @@
-version 5.241.2
+version 5.249.0
 source https://www.nuget.org/api/v2
 source https://api.nuget.org/v3/index.json
 storage: none
@@ -65,3 +65,4 @@ group Test
   nuget YoloDev.Expecto.TestSdk ~> 0.8.0
   nuget Microsoft.NETFramework.ReferenceAssemblies copy_local: true
   nuget Microsoft.VisualStudio.TestPlatform.ObjectModel
+  nuget coverlet.collector

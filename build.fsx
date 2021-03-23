@@ -426,10 +426,16 @@ let dotnetTest ctx =
     let args =
         [
             "--no-build"
+            "--collect:\"XPlat Code Coverage\""
             sprintf "/p:AltCover=%b" (not disableCodeCoverage)
             sprintf "/p:AltCoverThreshold=%d" coverageThresholdPercent
             sprintf "/p:AltCoverAssemblyExcludeFilter=%s" excludeCoverage
         ]
+
+    args
+    |> fun xs -> System.String.Join("\t\n", xs)
+    |> printfn "test args:\n%s"
+
     DotNet.test(fun c ->
 
         { c with

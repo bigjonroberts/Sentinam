@@ -1,7 +1,8 @@
 group Test
+    coverlet.collector
     FSharp.Core
     Microsoft.NET.Test.Sdk
-    xunit
-    xunit.runner.visualstudio
     Microsoft.NETFramework.ReferenceAssemblies
     Microsoft.VisualStudio.TestPlatform.ObjectModel framework: >= net461
+    xunit
+    xunit.runner.visualstudio

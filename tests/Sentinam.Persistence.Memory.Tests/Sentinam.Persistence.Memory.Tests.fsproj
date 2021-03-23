@@ -2,7 +2,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <!-- <TargetFramework>netcoreapp3.1</TargetFramework> -->
-    <TargetFrameworks>netcoreapp3.1;net461</TargetFrameworks>
+    <TargetFrameworks>netcoreapp5.0;net461</TargetFrameworks>
     <IsPackable>false</IsPackable>
     <GenerateProgramFile>true</GenerateProgramFile>
   </PropertyGroup>
