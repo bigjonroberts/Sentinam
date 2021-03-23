@@ -18,6 +18,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{EA0E7F41
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Sentinam.Persistence.Memory.Tests", "tests\Sentinam.Persistence.Memory.Tests\Sentinam.Persistence.Memory.Tests.fsproj", "{5C886DA1-9639-4D53-86A0-99C2E1B84475}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Sentinam.Persistence.SqlStreamStore", "src\Sentinam.Persistence.SqlStreamStore\Sentinam.Persistence.SqlStreamStore.fsproj", "{AFEE3AFF-51F0-41DB-96F6-8BBDEB67D10B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,10 +69,23 @@ Global
 		{5C886DA1-9639-4D53-86A0-99C2E1B84475}.Release|x64.Build.0 = Release|Any CPU
 		{5C886DA1-9639-4D53-86A0-99C2E1B84475}.Release|x86.ActiveCfg = Release|Any CPU
 		{5C886DA1-9639-4D53-86A0-99C2E1B84475}.Release|x86.Build.0 = Release|Any CPU
+		{AFEE3AFF-51F0-41DB-96F6-8BBDEB67D10B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFEE3AFF-51F0-41DB-96F6-8BBDEB67D10B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFEE3AFF-51F0-41DB-96F6-8BBDEB67D10B}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{AFEE3AFF-51F0-41DB-96F6-8BBDEB67D10B}.Debug|x64.Build.0 = Debug|Any CPU
+		{AFEE3AFF-51F0-41DB-96F6-8BBDEB67D10B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{AFEE3AFF-51F0-41DB-96F6-8BBDEB67D10B}.Debug|x86.Build.0 = Debug|Any CPU
+		{AFEE3AFF-51F0-41DB-96F6-8BBDEB67D10B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFEE3AFF-51F0-41DB-96F6-8BBDEB67D10B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFEE3AFF-51F0-41DB-96F6-8BBDEB67D10B}.Release|x64.ActiveCfg = Release|Any CPU
+		{AFEE3AFF-51F0-41DB-96F6-8BBDEB67D10B}.Release|x64.Build.0 = Release|Any CPU
+		{AFEE3AFF-51F0-41DB-96F6-8BBDEB67D10B}.Release|x86.ActiveCfg = Release|Any CPU
+		{AFEE3AFF-51F0-41DB-96F6-8BBDEB67D10B}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{6A13FBDD-797C-44CE-9821-BEB5658DE017} = {78E853BA-DEDB-48AC-B77A-2F4A8C1A64E6}
 		{D4F4F7CA-BF52-4887-8C34-8DCCBE674347} = {78E853BA-DEDB-48AC-B77A-2F4A8C1A64E6}
 		{5C886DA1-9639-4D53-86A0-99C2E1B84475} = {EA0E7F41-AC06-434D-913F-7D49BE2C1997}
+		{AFEE3AFF-51F0-41DB-96F6-8BBDEB67D10B} = {78E853BA-DEDB-48AC-B77A-2F4A8C1A64E6}
 	EndGlobalSection
 EndGlobal
