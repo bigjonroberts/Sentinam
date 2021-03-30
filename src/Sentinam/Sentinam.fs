@@ -21,7 +21,7 @@ type ReadStream<'aggregateId,'event,'eventId,'error> = {
 module ReadStream =
     let inline create
         (aggregateId:'aggregateId)
-        firstEventId 
+        firstEventId
         bufferSize
         (replyChannel:AsyncReplyChannel<ReadStreamReply<'event,'eventId,'error>>) = {
             AggregateId = aggregateId
@@ -86,21 +86,59 @@ type IncrementVersion<'event,'eventId> = 'event seq -> 'eventId -> 'eventId
 type EventAction<'event> = 'event -> unit
 type CommandToId<'command,'aggregateId> = 'command -> 'aggregateId
 type IsInitCommand<'command,'aggregateId,'aggregateError> = 'command -> Result<'aggregateId,'aggregateError>
+type ReadStream<'aggregateId,'eventId,'event> = int -> 'aggregateId -> 'eventId -> Async<'event seq * 'eventId * 'eventId option>
 
-type CommandProcessor<'aggregate,'aggregateId,'command,'event,'eventId,'aggregateError> = {
-    Evolve : Evolve<'aggregate,'event>
-    Load: Load<'aggregate,'aggregateId,'event,'eventId>
-    Save: Save<'aggregateId,'eventId,'event>
-    ExnToAggregateError: ExnToAggregateError<'aggregateId,'aggregateError>
-    HandleCommand: HandleCommand<'command,'aggregate,'event,'aggregateError>
-    IncrementVersion: IncrementVersion<'event,'eventId>
-    MinimumEventId: 'eventId
-    ReadStream: int -> 'aggregateId -> 'eventId -> Async<'event seq * 'eventId * 'eventId option>
-    // EventAction: EventAction<'event>
-    // CommandToId: CommandToId<'command,'aggregateId>
-    // IsInitCommand: IsInitCommand<'command,'aggregateId,'aggregateError>
-}
+type ICommandProcessor<'aggregate,'aggregateId,'command,'event,'eventId,'aggregateError> =
+    abstract member Evolve : 'aggregate -> 'event -> 'aggregate
+    abstract member GetLoad: unit -> Load<'aggregate,'aggregateId,'event,'eventId>
+    abstract member GetSave: unit -> Save<'aggregateId,'eventId,'event>
+    abstract member ExnToAggregateError: ExnToAggregateError<'aggregateId,'aggregateError>
+    abstract member HandleCommand: HandleCommand<'command,'aggregate,'event,'aggregateError>
+    abstract member IncrementVersion: IncrementVersion<'event,'eventId>
+    abstract member MinimumEventId: 'eventId
+    abstract member GetReadStream: unit -> ReadStream<'aggregateId,'eventId,'event>
 
+
+type StaticCommandProcessor<'aggregate,'aggregateId,'command,'event,'eventId,'aggregateError>
+    (
+        evolve: Evolve<'aggregate,'event>,
+         load: Load<'aggregate,'aggregateId,'event,'eventId>,
+         save: Save<'aggregateId,'eventId,'event>,
+         exnToAggregateError: ExnToAggregateError<'aggregateId,'aggregateError>,
+         handleCommand: HandleCommand<'command,'aggregate,'event,'aggregateError>,
+         incrementVersion: IncrementVersion<'event,'eventId>,
+         minimumEventId: 'eventId,
+         readStream: ReadStream<'aggregateId,'eventId,'event>) =
+    interface ICommandProcessor<'aggregate,'aggregateId,'command,'event,'eventId,'aggregateError> with
+        member _.Evolve (aggregate: 'aggregate) (event: 'event) : 'aggregate = evolve aggregate event
+        member _.GetLoad () : Load<'aggregate,'aggregateId,'event,'eventId> = load
+        member _.GetSave () : Save<'aggregateId,'eventId,'event> = save
+        member _.ExnToAggregateError: ExnToAggregateError<'aggregateId,'aggregateError> = exnToAggregateError
+        member _.HandleCommand: HandleCommand<'command,'aggregate,'event,'aggregateError> = handleCommand
+        member _.IncrementVersion: IncrementVersion<'event,'eventId> = incrementVersion
+        member _.MinimumEventId: 'eventId = minimumEventId
+        member _.GetReadStream () : ReadStream<'aggregateId,'eventId,'event> = readStream
+
+
+type DynamicCommandProcessor<'aggregate,'aggregateId,'command,'event,'eventId,'aggregateError>
+    (
+        evolve: Evolve<'aggregate,'event>,
+        getLoad: unit -> Load<'aggregate,'aggregateId,'event,'eventId>,
+        getSave: unit -> Save<'aggregateId,'eventId,'event>,
+        exnToAggregateError: ExnToAggregateError<'aggregateId,'aggregateError>,
+        handleCommand: HandleCommand<'command,'aggregate,'event,'aggregateError>,
+        incrementVersion: IncrementVersion<'event,'eventId>,
+        minimumEventId: 'eventId,
+        getReadStream: unit -> ReadStream<'aggregateId,'eventId,'event>) =
+    interface ICommandProcessor<'aggregate,'aggregateId,'command,'event,'eventId,'aggregateError> with
+        member _.Evolve (aggregate: 'aggregate) (event: 'event) : 'aggregate = evolve aggregate event
+        member _.GetLoad () : Load<'aggregate,'aggregateId,'event,'eventId> = getLoad ()
+        member _.GetSave () : Save<'aggregateId,'eventId,'event> = getSave ()
+        member _.ExnToAggregateError: ExnToAggregateError<'aggregateId,'aggregateError> = exnToAggregateError
+        member _.HandleCommand: HandleCommand<'command,'aggregate,'event,'aggregateError> = handleCommand
+        member _.IncrementVersion: IncrementVersion<'event,'eventId> = incrementVersion
+        member _.MinimumEventId: 'eventId = minimumEventId
+        member _.GetReadStream () : ReadStream<'aggregateId,'eventId,'event> = getReadStream ()
 
 module Common =
 
@@ -127,7 +165,7 @@ module Sentinam =
     let getAggregateId<'command,'event,'eventId,'aggregateId,'aggregate,'error>
         (getId: 'command -> 'aggregateId)
         (envelope: Envelope<'command,'event,'eventId,'aggregateId,'aggregate,'error>) =
-            match envelope with 
+            match envelope with
             | GetState (w,_,_) -> w
             | ReadStream rs -> rs.AggregateId
             | ResultCommand p -> getId p.Command
@@ -157,21 +195,24 @@ module Sentinam =
     // this is the "repository"
     let inline internal save appendToStream aggregateId (expectedVersion:'eventId) events =
         appendToStream aggregateId expectedVersion events
-    
+
     //let inline internal processReadStream (rdStrm:ReadStream<'aggregateId,'aggregateEvent,'eventId,'aggregateError>) readStream =
     //    readStream rdStrm.AggregateId rdStrm.FirstEventId rdStrm.BufferSize
     //    |> Async.map(Ok >> rdStrm.ReplyChannel.Reply) |> Async.Start
 
     let createAgent<'aggregate,'aggregateId,'command,'event,'eventId,'aggregateError when 'eventId : equality>
-        (cp: CommandProcessor<'aggregate,'aggregateId,'command,'event,'eventId,'aggregateError>)
+        (cp: ICommandProcessor<'aggregate,'aggregateId,'command,'event,'eventId,'aggregateError>)
         (sendToObservers: EventAction<'event>)
         (cancellationToken: System.Threading.CancellationToken)
         (aggregateId:'aggregateId)
         =
+            let save = cp.GetSave ()
+            let load = cp.GetLoad ()
+            let readStream = cp.GetReadStream ()
             let getResult version state (reply:Result<('eventId*'aggregate*'event seq),'aggregateError> -> unit) (eventResult:Result<'event seq,'aggregateError>) = async {
               match eventResult with
                 | Ok events ->
-                    match! cp.Save aggregateId version events with // save eventStore.AppendToStream workflowId version events with
+                    match! save aggregateId version events with // save eventStore.AppendToStream workflowId version events with
                         | Ok (_:unit) ->
                             let newState = Seq.fold cp.Evolve state events
                             let newVersion = cp.IncrementVersion events version
@@ -181,7 +222,7 @@ module Sentinam =
                         | Error e ->
                             cp.ExnToAggregateError aggregateId e |> Error |> reply
                             return (version,state)
-                | Error e -> 
+                | Error e ->
                     e |> Error |> reply
                     return (version,state) }
             Agent.Start ((fun inbox ->
@@ -192,12 +233,12 @@ module Sentinam =
                         match ver = version || ver = cp.MinimumEventId with
                           | true -> async { return (version,state) }
                           | false ->
-                            cp.Load cp.Evolve ver aggregateId
+                            load cp.Evolve ver aggregateId
                             //load eventStore.ReadStream (EventId ver) takeUpTo (streamIdString workflowId)
                         |> Async.map (Ok >> replyChannel.Reply) |> Async.Start
                         return! loop (version,state)
                     | ReadStream (rdStrm) ->
-                        cp.ReadStream rdStrm.BufferSize rdStrm.AggregateId rdStrm.FirstEventId
+                        readStream rdStrm.BufferSize rdStrm.AggregateId rdStrm.FirstEventId
                         |> Async.map (Ok >> rdStrm.ReplyChannel.Reply) |> Async.Start
                         return! loop (version,state)
                     | ResultCommand command ->
@@ -207,9 +248,9 @@ module Sentinam =
                         let replyFunc = ((Result.map (fun (newVersion,_,eList) -> (newVersion,eList))) >> command.ReplyChannel.Reply)
                         return! state |> cp.HandleCommand command.Command |> getResult replyFunc |> Async.bind loop
                     }
-                cp.Load cp.Evolve cp.MinimumEventId aggregateId |> Async.bind loop)
+                load cp.Evolve cp.MinimumEventId aggregateId |> Async.bind loop)
               , cancellationToken)
-    
+
     let createDispatcherAgent<'aggregate,'aggregateId,'event,'eventId,'command,'aggregateError when 'aggregateId : comparison>
         (commandToId: CommandToId<'command,'aggregateId>)
         (cancellationToken:System.Threading.CancellationToken)

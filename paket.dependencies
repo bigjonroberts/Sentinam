@@ -10,7 +10,7 @@ nuget FSharp.Core
 github haf/YoLo YoLo.fs
 nuget Microsoft.SourceLink.GitHub prerelease copy_local: true
 nuget Microsoft.NETFramework.ReferenceAssemblies copy_local: true
-nuget Newtonsoft.Json
+nuget Newtonsoft.Json 9.0
 nuget SqlStreamStore
 
 
